@@ -28,3 +28,66 @@ class LibroDAO:
         cursor.close()
         conexion.close()
         return libros
+    #Crear insertar
+
+    def insertar(self,libro):
+        conexion = Conexion.obtener_conexion()
+        cursor = conexion.cursor()#Conexion es la clase conexion es la varibale
+
+#recibe parametro %s
+        sql="""
+        INSERT INTO libro(titulo,autor,isbn,disponible)
+        VALUES(%s,%s,%s,%s)
+        """
+        cursor.execute(
+            sql,
+            (libro.titulo,
+             libro.autor,
+             libro.isbn,
+             libro.disponible)
+        )
+
+        conexion.commit()
+        cursor.close()
+        conexion.close()
+        
+
+    def actualizar(self,libro):
+        conexion = Conexion.obtener_conexion()
+        cursor = conexion.cursor()#C
+
+        #modifique por ID 
+        sql=""" 
+        UPDATE libro
+        SET titulo = %s,autor = %s,isbn= %s ,
+        disponible = %s
+        WHERE id = %s  
+
+         """
+        cursor.execute(
+            sql,
+            (libro.titulo,
+             libro.autor,
+             libro.isbn,
+             libro.disponible,
+             libro.id)
+        )
+
+        conexion.commit()
+        cursor.close()
+        conexion.close()
+
+    #eliminar un regsitro
+    def eliminar(self,libro_id):
+        conexion = Conexion.obtener_conexion()
+        cursor = conexion.cursor()#C
+
+        cursor.execute(
+            "DELETE FROM libro WHERE id = %s",
+             (libro_id,)
+             )
+        conexion.commit()
+        cursor.close()
+        conexion.close()
+
+
