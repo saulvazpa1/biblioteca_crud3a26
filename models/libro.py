@@ -1,12 +1,12 @@
 class Libro:
 
     #Constructor
-    def __init__(self,id_libro,titulo,autor,isbn):
-        self.id_libro = id_libro
+    def __init__(self,id,titulo,autor,isbn,disponible):
+        self.id = id
         self.titulo = titulo
         self.autor = autor
         self.isbn= isbn
-        self.disponible = True #por defecto el libro esta disponible
+        self.disponible = disponible #por defecto el libro esta disponible
 
     def prestar(self):
         if self.disponible:

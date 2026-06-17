@@ -18,12 +18,14 @@ class LibroDAO:
         libros =[] #lsita vacia
         for registro in registros:  #crea un nuevo libro con nueva info
             libro = Libro(
-            registro.id,
-            registro.titulo,
-            registro.autor,
-            registro.isb,
-            registro.disponible)
+            id=registro[0],
+            titulo=registro[1],
+            autor=registro[2],
+            isbn=registro[3],
+            disponible=registro[4]
+            )
             libros.append(libro)
+           
 
         cursor.close()
         conexion.close()
