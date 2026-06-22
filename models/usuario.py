@@ -6,7 +6,7 @@ class Usuario:
         self.nombre = nombre
         self.matricula= matricula
         self.email = email
-        self.carrera= self.carrera
+        self.carrera= carrera
         self.activo= True
     def activar(self):
         self.activo = True

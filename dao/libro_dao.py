@@ -12,7 +12,10 @@ class LibroDAO:
       #obejto para mysql 
         cursor = conexion.cursor()
         #que comando ejecutar
-        cursor.execute("SELECT * FROM libro")
+
+       
+        
+        cursor.execute("SELECT * FROM vista_libros")  #tabla virtual
         registros=cursor.fetchall() #nombre de la tabla/el resultado de cursor fetchall
         
         libros =[] #lsita vacia
@@ -38,8 +41,8 @@ class LibroDAO:
 
 #recibe parametro %s
         sql="""
-        INSERT INTO libro(titulo,autor,isbn,disponible)
-        VALUES(%s,%s,%s,%s)
+        INSERT INTO libro(id,titulo,autor,isbn,disponible)
+        VALUES(%s,%s,%s,%s,%s)
         """
         cursor.execute(
             sql,
@@ -91,5 +94,18 @@ class LibroDAO:
         conexion.commit()
         cursor.close()
         conexion.close()
+
+    def obtener_ultimo_id(self):
+        conexion = Conexion.obtener_conexion()
+        cursor = conexion.cursor()
+
+        cursor.execute("SELECT id FROM libro ORDEN BY id DESC")
+        resultado = cursor.fetchone()
+        cursor.close()
+        conexion.close()
+
+        if resultado is None:
+            return 0
+        return resultado[0]
 
 
