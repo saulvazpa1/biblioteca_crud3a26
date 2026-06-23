@@ -46,7 +46,9 @@ class LibroDAO:
         """
         cursor.execute(
             sql,
-            (libro.titulo,
+
+            (libro.id,
+             libro.titulo,
              libro.autor,
              libro.isbn,
              libro.disponible)
@@ -99,7 +101,7 @@ class LibroDAO:
         conexion = Conexion.obtener_conexion()
         cursor = conexion.cursor()
 
-        cursor.execute("SELECT id FROM libro ORDEN BY id DESC")
+        cursor.execute("SELECT id FROM libro ORDER BY id DESC")
         resultado = cursor.fetchone()
         cursor.close()
         conexion.close()
