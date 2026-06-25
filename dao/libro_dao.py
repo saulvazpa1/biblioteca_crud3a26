@@ -80,9 +80,11 @@ class LibroDAO:
              libro.id)
         )
 
-        conexion.commit()
+        conexion.commit()#confirmar un edicion de base de datos
         cursor.close()
         conexion.close()
+
+
 
     #eliminar un regsitro
     def eliminar(self,libro_id):
