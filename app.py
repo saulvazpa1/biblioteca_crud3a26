@@ -1,8 +1,14 @@
 
+import flet as ft
+
+
 from dao.libro_dao import LibroDAO #/carpeta ./nombre del archvio/clase
 from models.libro import Libro
 from dao.usuario_dao import UsuarioDAO #/carpeta ./nombre del archivo/clase
 from models.usuario import Usuario
+from ui.main_window import main_window
+
+
 
 def ver_libros():
     try:
@@ -190,30 +196,27 @@ def menu_usuarios():
         case 4 :
            eliminar_usuario()
 
+ft.app(target = main_window)
 
 
-
-
-
-
-def main():
-    print("==== BIBLIOTECA UNI ====")
-    print("1. Gestionar Libros")
-    print("2. Gestionar Usuarios")
+# def main():
+#     print("==== BIBLIOTECA UNI ====")
+#     print("1. Gestionar Libros")
+#     print("2. Gestionar Usuarios")
     
-    try:
-        opcion = int(input("Selecciona una opción general (1-2): "))
-        match opcion:
-            case 1:
-                menu_libros()
-            case 2:
-                menu_usuarios()
-            case _:
-                print("Opción no válida.")
-    except ValueError:
-        print("Por favor, introduce un número válido.")
+#     try:
+#         opcion = int(input("Selecciona una opción general (1-2): "))
+#         match opcion:
+#             case 1:
+#                 menu_libros()
+#             case 2:
+#                 menu_usuarios()
+#             case _:
+#                 print("Opción no válida.")
+#     except ValueError:
+#         print("Por favor, introduce un número válido.")
 
     
-if __name__ == "__main__":
-    main()
-    
+# if __name__ == "__main__":
+#     main()
+    #control +k+c comentar todo
