@@ -20,6 +20,27 @@ def libro_form():
         color= ft.Colors.GREEN
     )
 
+    #crear la funcion para el boton
+    def guardar_libro(e):
+        titulo=titulo_input.value#recuperar los valores de TEXTFIELD
+        autor = autor_input.value#nombre_text_field.value
+        isbn = isbn_input.value
+
+        #validacion de datos 
+
+        if titulo ==" " or autor== "" or isbn=="":
+            mensaje.value="Todos los cmapos son obligatorios"
+            mensaje.color= ft.Colors.RED
+        else:
+            mensaje.value=f"Libro'{titulo}'listo para insertar"
+            print(f"Titulo:'{titulo}',Autor:'{autor}',ISBN:'{isbn}'")#para ver en consola si funciona
+            mensaje.color=ft.Colors.GREEN
+            #limpiar campos
+            titulo_input.value=""
+            autor_input.value=""
+            isbn_input.value=""
+            
+        e.page.update()
     return ft.Container(
         padding= 30,
         content= ft.Column(#crear lista necesita controls
@@ -27,7 +48,9 @@ def libro_form():
                 ft.Text(
                     "Registrar nuevo libro",
                     size=24,
-                    weight= ft.FontWeight.BOLD
+                    weight= ft.FontWeight.BOLD,
+                    color =ft.Colors.BLUE_GREY_800
+                   
                 ),
                 ft.Text(
                     "Captura los datos basicos del libro",
@@ -42,8 +65,10 @@ def libro_form():
 
                 ft.ElevatedButton(
                     "Registrar libro",
-                    icon=ft.Icons.SAVE
-                )
+                    icon=ft.Icons.SAVE,
+                    on_click=guardar_libro
+                ),
+                mensaje
                
             ],
             spacing=15
