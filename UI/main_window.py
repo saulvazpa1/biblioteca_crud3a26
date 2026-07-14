@@ -26,7 +26,7 @@ def main_window(page:ft.Page):
     )
 #widget container
     contenido =ft.Container(
-        content= ft.Column(#contener de un formato de columna
+        content= ft.Column(#contener de un formato de columna abajo de otro
             controls=[
                 titulo,
                 subtitulo
@@ -84,7 +84,7 @@ def main_window(page:ft.Page):
 
     )
 
-    #Agregar los widgets ala pagina
+    #Agregar los widgets ala pagina la division de la ventana
     layaout = ft.Row(
         controls=[
             menu_lateral,
@@ -94,5 +94,5 @@ def main_window(page:ft.Page):
 
     )
 
-    page.add(layaout)
+    page.add(layaout) #es la pagina si no seria una ventana vacia
 
