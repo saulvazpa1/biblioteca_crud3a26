@@ -26,20 +26,35 @@ def main_window(page:ft.Page):
     )
 #widget container
     contenido =ft.Container(
-        content= ft.Column(#contener de un formato de columna abajo de otro
+        
+        padding=30,
+        expand=True
+
+    )
+
+    def inicio():
+        return ft.Column(               #contener de un formato de columna abajo de otro
             controls=[
                 titulo,
                 subtitulo
             ],
             spacing= 10
 
-        ),
-        padding=30,
-        expand=True
-    )
+        )
+    
+
+
+
+    def mostrar_inicio(e=None):
+        contenido.content = inicio()
+        page.update()
+
+
+
+
     #reacciona al clic del boton de libros en el menu lateral=====
-    def insertar_libros(e):#funciona cuando das clic
-        contenido.content=libro_form()
+    def mostrar_insertar_libro(e=None):#funciona cuando das clic
+        contenido.content=libro_form(mostrar_inicio)
         page.update()
 
     menu_lateral = ft.Container(
@@ -61,10 +76,17 @@ def main_window(page:ft.Page):
                 ),
                 ft.Divider(color=ft.Colors.BLUE_GREY_700),
                 ft.ElevatedButton(
+                    "Inicio",
+                    icon =ft.Icons.HOME,
+                    width= 180,
+                    on_click= mostrar_inicio
+
+                ),
+                ft.ElevatedButton(
                     "Libros",
                     icon =ft.Icons.BOOK,
                     width=180,
-                    on_click=insertar_libros#con paratensis ordenas obligatoria y si no cuando suceda esto lo haces despues
+                    on_click=mostrar_insertar_libro#con paratensis ordenas obligatoria y si no cuando suceda esto lo haces despues
                 ),
                  ft.ElevatedButton(
                     "Usuarios",
@@ -100,4 +122,5 @@ def main_window(page:ft.Page):
     )
 
     page.add(layaout) #es la pagina si no seria una ventana vacia
+    mostrar_inicio()
 
